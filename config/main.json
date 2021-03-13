@@ -5,7 +5,7 @@
   "description": "Live Map for Farming Simulator 19",
   "logo": "/images/Oasis_Favicon.png",
   "port": 3003,
-  "repository": "",
+  "repository": "git@github.com:msdigital/oasis.git",
   "gameserver": {
     "ip": "176.57.153.108:8220",
     "code": "SgGswmAS"

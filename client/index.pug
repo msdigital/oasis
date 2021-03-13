@@ -1,0 +1,38 @@
+include layout
+
+doctype html
+html(lang="de").h-100
+  head
+    title #{config.siteTitle}
+    meta(charset="utf-8")
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name="description", content=config.description)
+    meta(name="author", content="msdigital.ch")
+    link(rel='shortcut icon', href='/images/favicon.ico')
+    link(rel='icon', type='image/png', href='/images/favicon32.png', sizes='32x32')
+    link(rel='icon', type='image/png', href='/images/favicon96.png', sizes='96x96')
+    link(rel='apple-touch-icon', sizes='180x180', href='/images/favicon180.png')
+    meta(name='msapplication-TileColor', content='#ffffff')
+    meta(name='msapplication-TileImage', content='/images/favicon144.png')
+
+    // Bootstrap
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css", integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk", crossorigin="anonymous")
+
+    // Custom fonts for this template
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i')
+
+    // Custom CSS
+    link(rel='stylesheet' href='https://unpkg.com/leaflet@1.3.4/dist/leaflet.css' integrity='sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==' crossorigin='')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+  body(data-spy='scroll', data-target='.onpage-navigation', data-offset='60').d-flex.flex-column.h-100
+    header
+      +navigation()
+
+    main(role='main').flex-shrink-0
+      .container
+        block content
+
+    +footer()
+    +scripts()

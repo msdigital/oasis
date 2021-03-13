@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,100,300,700");
+body{
+  /*color:white;*/
+  color: #bfbfbf;
+  /*background:#13232c;*/
+  /*background:#131c26;*/
+  /*font-size: 14px;*/
+  font-family:"Roboto", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+/*  background-image: linear-gradient(180deg,rgba(33, 33, 33, 0.75),rgba(33, 33, 33, .9)),url(/images/background.png);
+  background-repeat: no-repeat;
+  background-size: cover;*/
+}
+
+a {
+  color: #2278d2;
+  text-decoration: none;
+}
+a:hover {text-decoration: none;}
+
+main > .container {
+  padding: 70px 15px 15px;
+}
+.navbar {
+  background-color: #212121;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,.3);
+}
+.footer {
+  background-color: #212121;
+  font-size:0.8rem;
+  box-shadow: 0px -2px 4px 0px rgba(0,0,0,.3);
+}
+
+#map{ height:750px; width:750px; }
+.leaflet-marker-icon { filter: drop-shadow(0 -2px 1px #444); }

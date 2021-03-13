@@ -1,0 +1,51 @@
+{
+  "name": "oasis",
+  "version": "0.0.1",
+  "siteTitle": "Oasis - FS19 Live Map",
+  "description": "Live Map for Farming Simulator 19",
+  "logo": "/images/Oasis_Favicon.png",
+  "port": 3003,
+  "repository": "",
+  "gameserver": {
+    "ip": "176.57.153.108:8220",
+    "code": "SgGswmAS"
+  },
+  "icons": {
+    "default": {
+      "icon": "default.png",
+      "desc": "Diverse",
+      "width": 10,
+      "height": 10
+    },
+    "tractor": {
+      "icon": "tractor.png",
+      "desc": "Tractor",
+      "width": 32,
+      "height": 32
+    },
+    "farmer": {
+      "icon": "farmer.png",
+      "desc": "Farmer",
+      "width": 24,
+      "height": 24
+    },
+    "train": {
+      "icon": "train.png",
+      "desc": "Train",
+      "width": 20,
+      "height": 20
+    },
+    "harvester": {
+      "icon": "harvester.png",
+      "desc": "Harvester",
+      "width": 32,
+      "height": 32
+    },
+    "trailer": {
+      "icon": "trailer.png",
+      "desc": "Trailer",
+      "width": 32,
+      "height": 32
+    }
+  }
+}

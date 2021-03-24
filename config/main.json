@@ -7,7 +7,7 @@
   "port": 3003,
   "repository": "git@github.com:msdigital/oasis.git",
   "gameserver": {
-    "ip": "176.57.153.108:8220",
+    "ip": "176.57.168.224:8230",
     "code": "SgGswmAS"
   },
   "icons": {

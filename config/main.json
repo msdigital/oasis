@@ -1,6 +1,6 @@
 {
   "name": "oasis",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "siteTitle": "Oasis - FS19 Live Map",
   "description": "Live Map for Farming Simulator 19",
   "logo": "/images/Oasis_Favicon.png",
@@ -17,6 +17,12 @@
       "width": 10,
       "height": 10
     },
+    "train": {
+      "icon": "train.png",
+      "desc": "Train",
+      "width": 20,
+      "height": 20
+    },
     "tractor": {
       "icon": "tractor.png",
       "desc": "Tractor",
@@ -29,13 +35,7 @@
       "width": 24,
       "height": 24
     },
-    "train": {
-      "icon": "train.png",
-      "desc": "Train",
-      "width": 20,
-      "height": 20
-    },
-    "harvester": {
+    "harvesters": {
       "icon": "harvester.png",
       "desc": "Harvester",
       "width": 32,
@@ -46,6 +46,48 @@
       "desc": "Trailer",
       "width": 32,
       "height": 32
+    },
+    "bigbags": {
+      "icon": "bigbag.png",
+      "desc": "BigBag",
+      "width": 12,
+      "height": 12
+    },
+    "watertrailer": {
+      "icon": "waterTrailer.png",
+      "desc": "Water Trailer",
+      "width": 24,
+      "height": 24
+    },
+    "fertilizerspreaders": {
+      "icon": "fertilizerspreaders.png",
+      "desc": "Fertilizer Spreader",
+      "width": 24,
+      "height": 24
+    },
+    "foragewagon": {
+      "icon": "forageWagon.png",
+      "desc": "Forage Wagon",
+      "width": 24,
+      "height": 24
+    },
+    "mixerwagon": {
+      "icon": "mixerWagon.png",
+      "desc": "Mixer Wagon",
+      "width": 24,
+      "height": 24
+    },
+    "beetvehicles": {
+      "icon": "beetvehicles.png",
+      "desc": "Beet Vehicle",
+      "width": 24,
+      "height": 24
+    },
+    "fertilizingsowingmachine": {
+      "icon": "fertilizingSowingMachine.png",
+      "desc": "Fertilizing Sower",
+      "width": 24,
+      "height": 24
     }
   }
 }

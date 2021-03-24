@@ -1,4 +1,5 @@
 var config = require('../config/config')
+  , debug = require('debug')('util')
 
 module.exports.getIcon = function(object){
   var icons = config.icons
@@ -6,11 +7,11 @@ module.exports.getIcon = function(object){
   if(object=="farmer"){
     return icons['farmer']
   }
-  else if(icons.hasOwnProperty(object.type)){
-    return icons[object.type]
+  else if(icons.hasOwnProperty(object.type.toLowerCase())){
+    return icons[object.type.toLowerCase()]
   }
-  else if(icons.hasOwnProperty(object.category)){
-    return icons[object.category]
+  else if(icons.hasOwnProperty(object.category.toLowerCase())){
+    return icons[object.category.toLowerCase()]
   }
   return icons['default']
 }

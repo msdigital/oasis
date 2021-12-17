@@ -1,53 +1,48 @@
+const { json } = require('express');
+const logger = require('../lib/logger');
+
 var express = require('express')
-  , debug = require('debug')('router')
   , router = express.Router()
   , async = require('async')
   , api = require('../api')
-  , { Server } = require('../model/server')
+  , Geo = require('../lib/geojson')
   , Player = require('../model/player')
   , Vehicle = require('../model/vehicle')
-  , GeoJson = require('../model/geojson')
 
-/* get map image */
-router.get('/api/map.jpg', function(req, res, next){
+router.get('/api/map.jpg', function (req, res, next) {
   api.getMap((map) => {
-    res.set({'Content-Type': 'image/png'});
+    res.set({ 'Content-Type': 'image/png' });
     res.send(map.body);
   })
 })
 
-router.get('/api/geo.json', function(req, res, next){
-  api.getEntities((server) => {
-    var players = Player.getPlayers(server.Slots.Player)
-    var vehicles = Vehicle.getVehicles(server.Vehicles.Vehicle)
-    var geoJson = GeoJson.generate(players, vehicles)
+var _server = null;
 
-    res.send(geoJson)
+router.get('*', function (req, res, next){
+  api.getEntities((entities) => {
+    _server = entities;
+    next();
   })
 })
 
-/* get default options */
+router.get('/api/geo.json', function (req, res, next) {
+  var objects = [...Geo.createObjects(_server.players), ...Geo.createObjects(_server.vehicles)];
+  res.send(Geo.createGeoJson(objects));
+})
+
 router.get('/', function(req, res, next){
   async.parallel({
-    server: function(cb){
-      api.getEntities((res) => { cb(null, res) })
-    },
-    game: function(cb){
+    savegame: function (cb) {
       api.getSavegame((res) => { cb(null, res) })
-    },
-    economy: function(cb){
-      api.getEconomy((res) => { cb(null, res) })
     }
   },
-  function(err, results){
-    res.render('home',{
-      entities: {
-        players: Player.getPlayers(results.server.Slots.Player),
-        vehicles: Vehicle.getVehicles(results.server.Vehicles.Vehicle)
-      },
-      server: new Server(results.server, results.game),
-      economy: results.economy
-    })
+  function (err, results) {
+    res.render('home', {
+      game: results.savegame,
+      slots: _server.slots,
+      server: _server.server,
+      players: _server.players
+    });
   })
 })
 

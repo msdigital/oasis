@@ -1,32 +1,46 @@
 # Oasis
 
-Live Map for Farming Simulator 19
+Live Map for Farming Simulator 22
 
-### Prerequisites
+## Prerequisites
 
 * Works best on linux hosts ;)
-* npm > 6.14.8
-* node > 13.7.0
+* node > 16.9.1
+* npm > 7.24.1
 
-### Installing
+## Run Oasis locally
 
-1. Fork repo
-2. Run `npm install` and let npm do the rest :)
+### Installation
 
-### Run Project
+1. Get the [latest](https://github.com/msdigital/oasis/releases/latest) relase version
+2. Extract zip file
+3. Open a new terminal inside the folder
+4. Run `npm install` and let npm do the rest :)
 
-#### Local/Development
+### Run Oasis
 
-In local environments, just run `npm run local` to have most of the debuggings active.
+The configuration is pretty easy.
+Just provide the following settings as environment variables to your node process
+_or_
+This app uses dotenv, just create an `.env` file in the root folder and add the following variables to it.
+
+| Variable  | Description |
+| ------------- | ------------- |
+| WEB_PORT  | The port the app will use to run (ex. 3000)  |
+| SERVER_IP  | The game server ip and port (ex. 127.0.0.1:1234)  |
+| SERVER_KEY  | Some kind of secret key, should look something like this "fGL0Dayr"  |
+
 The Website is accessed via `localhost:3000`
 
-#### Production
+## Run Oasis on a server
 
-This project runs with the `pm2` node process manager.
-Deployment configured in `ecosystem.config.js` and `/config/main.json`.
+### **_I do not provide support for installation and hosting!_**
 
-**DNS configuration etc. are up to the host.**
+This project runs with `pm2` node process manager.
+Deployment configured in `ecosystem.config.js`.
+
+*DNS configuration etc. are up to the host.*
 
 ## Authors
 
-* **msdigital.ch** - *Initial work* - [msdigital](https://gitlab.com/msuti)
+This project is licensed under GNU Lesser General Public License version 3 (GNU LGPLv3) - see the [LICENSE.md](LICENSE.md) file for details

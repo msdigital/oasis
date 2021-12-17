@@ -1,5 +1,5 @@
 var lodash = require('lodash')
-  , util = require('../util')
+  , util = require('../lib/util')
 
 module.exports.getPlayers = function(players){
   var results = []

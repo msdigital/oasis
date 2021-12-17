@@ -1,48 +1,44 @@
-var createError = require('http-errors')
-  , express = require('express')
+const express = require('express')
+  , createError = require('http-errors')
   , path = require('path')
-  , cookieParser = require('cookie-parser')
-  , logger = require('morgan')
-  , config = require('../config/config')
-  , moment = require('moment')
+  , config = require('../config.server')
+  , logger = require('./lib/logger');
 
-var indexRouter = require('./routes/index');
+const server = express();
 
-var app = express();
+server.set('views', path.join(__dirname, '../client'));
+server.set('view engine', 'pug');
 
-// view engine setup
-app.set('views', path.join(__dirname, '../client'));
-app.set('view engine', 'pug');
+server.use(express.json());
+server.use(express.urlencoded({ extended: false}));
+server.use(express.static(path.join(__dirname, '../public')));
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../public')));
-
-// make config available
-app.use(function(req, res, next) {
-  res.locals.config = config
-  res.locals.moment = moment
+server.use(function(req, res, next){
+  res.locals.config = config;
+  res.locals.icons = require('./lib/icons')
   next();
 });
 
-app.use('/', indexRouter);
+var router = require('./routes/index');
+server.use('/',router);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
+server.use(function(req, res, next){
   next(createError(404));
-});
+})
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
+server.use(function(err, req, res, next){
+  logger.JSON(err.message);
   res.status(err.status || 500);
-  res.render('error');
-});
+  res.render('error',{
+    error: {
+      status: 500,
+      message: err.message
+    }
+  });
+})
 
-module.exports = app;
+var port = config.WEB_PORT == '' ? 3000 : config.WEB_PORT;
+
+server.listen(port, () => {
+  logger.info('Oasis started on port ' + port);
+})

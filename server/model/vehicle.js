@@ -1,5 +1,5 @@
 var lodash = require('lodash')
-  , util = require('../util')
+  , util = require('../lib/util')
 
 module.exports.getVehicles = function(vehicles){
   var results = []
@@ -20,5 +20,6 @@ module.exports.Vehicle = function(vehicle){
   this.type = vehicle._attributes.type
   this.category = vehicle._attributes.category
   this.type = vehicle._attributes.type
+  this.isAI = vehicle._attributes.isAIActive
   this.icon = util.getIcon(vehicle._attributes)
 }

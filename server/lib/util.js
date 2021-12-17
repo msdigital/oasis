@@ -1,17 +1,20 @@
-var config = require('../config/config')
-  , debug = require('debug')('util')
+var xjs = require('xml-js')
+  , icons = require('./icons')
+
+module.exports.convert2json = function (xml) {
+  var res = xjs.xml2js(xml, { compact: true, spaces: 2 });
+  return res;
+}
 
 module.exports.getIcon = function(object){
-  var icons = config.icons
-
   if(object=="farmer"){
     return icons['farmer']
   }
-  else if(icons.hasOwnProperty(object.type.toLowerCase())){
-    return icons[object.type.toLowerCase()]
-  }
   else if(icons.hasOwnProperty(object.category.toLowerCase())){
     return icons[object.category.toLowerCase()]
+  }
+  else if (icons.hasOwnProperty(object.type.toLowerCase())) {
+    return icons[object.type.toLowerCase()]
   }
   return icons['default']
 }

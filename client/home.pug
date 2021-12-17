@@ -1,67 +1,44 @@
 extends index
 
 block content
-  section
-    .content
-      .container
-        .row
-          .col-xl-9
-            #map
-          .col-xl-3
-            .row
-              h6
-                | Currently Online (
-                span #{server.onlineCount}
-                | /
-                span #{server.maxCount}
-                | )
-              table.table.small.table-sm.shadow-sm
-                tbody
-                  if entities.players.length>0
-                    each player in entities.players
-                      tr
-                        td=player.name
-                        td.push-right=player.uptime
-                        if player.admin=="true"
-                          td
-                            span.badge.badge-pill.badge-danger admin
-                  else
-                    tr
-                      td No Players online
-            .row
-              h6 High Demands
-              table.table.small.table-sm.shadow-sm
-                tbody#highDemands
-                tfoot
-                  tr.text-muted
-                    td Total Money:
-                    td.text-left(colspan='5') #{server.money}
-            .row
-              h6 Icon Legend
-              table.table.small.table-sm.shadow-sm
-                tbody
-                  each icon in config.icons
-                    tr
-                      td(width='20')
-                        img(src="/images/icons/"+icon.icon height='16')
-                      td #{icon.desc}
-
-            .row
-              h6 Settings
-              table.table.small.table-sm.shadow-sm
-                tr
-                  td
-                    b Map
-                  td #{server.name}
-                tr
-                  td
-                    b Time Scale
-                  td #{server.timeScale}
-                tr
-                  td
-                    b Save Interval
-                  td #{server.saveInterval}
-                tr
-                  td
-                    b Version
-                  td #{server.version}
+  .row
+    .col-xl-9
+      #map
+    .col-xl-3
+      .card.mb-3.small.shadow-sm
+        .card-header Currently Online (#{slots.onlineCount}/#{slots.maxCount})
+        ul.list-group.list-group-flush
+          if players.length>0
+            each player in players
+              li.list-group-item=player.name
+                if player.admin=="true"
+                  span.top-0.ms-2.badge.rounded-pill.bg-danger
+                    | admin
+                span.float-end=player.uptime
+          else
+            li.list-group-item No Player online
+        .card-footer
+          | Total Money:
+          span.float-end #{game.money}
+      .card.mb-3.small.shadow-sm
+        .card-header Icon Legend
+        ul.list-group.list-group-flush
+          each icon in icons
+            li.list-group-item
+              img(src="/images/icons/"+icon.icon height='16').me-3
+              | #{icon.desc}
+      .card.mb-3.small.shadow-sm
+        .card-header="Server Details"
+        ul.list-group.list-group-flush
+          li.list-group-item
+            b Map
+            span.float-end #{game.mapname}
+          li.list-group-item
+            b Time Scale
+            span.float-end #{game.timeScale}
+          li.list-group-item
+            b Save Interval
+            span.float-end #{game.saveInterval}
+          li.list-group-item
+            b Server-Version
+            span.float-end #{server.version}

@@ -1,21 +1,28 @@
 {
   "name": "oasis",
-  "version": "0.0.1",
-  "description": "Live Map for Farming Simulator 19",
-  "main": "app.js",
+  "version": "1.22.0",
+  "description": "Live Map for Farming Simulator 22",
+  "main": "server/app.js",
   "private": true,
   "scripts": {
-    "local": "DEV_ENV=local NODE_ENV=development DEBUG=*,-body-parser*,-express*,-knex*,-send*,-morgan* npm start",
-    "start": "node ./bin/www"
+    "local": "DEV_ENV=local NODE_ENV=development DEBUG=*,-body-parser*,-express*,-knex*,-send*,-morgan*,-superagent* npm start",
+    "start": "nodemon server/app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:msdigital/oasis.git"
+    "url": "https://github.com/msdigital/oasis"
+  },
+  "author": "msdigital.ch",
+  "license": "GNU LGPLv3",
+  "engines": {
+    "node": "~16.9.1",
+    "npm": "~7.24.1"
   },
   "dependencies": {
     "async": "^3.2.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^10.0.0",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "leaflet": "^1.7.1",
@@ -24,7 +31,10 @@
     "morgan": "~1.9.1",
     "pug": "^3.0.1",
     "superagent": "^6.1.0",
+    "winston": "^3.3.3",
     "xml-js": "^1.6.11"
   },
-  "author": "msdigital.ch"
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }

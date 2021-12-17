@@ -1,64 +1,49 @@
-var express = require('express')
-  , request = require('superagent')
-  , config = require('../config/config')
-  , debug = require('debug')('api')
-  , xjs = require('xml-js')
-  , Server = require('./model/server')
-  // , MapIcons = require('./mapIcons.js')
+var request = require('superagent')
+  , util = require('./lib/util')
+  , config = require('../config.server')
+  , { Game } = require('./model/game')
+  , { Server, Slots } = require('./model/server')
+  , Player = require('./model/player')
+  , Vehicle = require('./model/vehicle')
 
-module.exports = {}
-
-var convert2json = function(xml){
-  var res = xjs.xml2js(xml, {compact: true, spaces: 2} );
-  return res;
-}
-
-module.exports.getMap = function(cb){
+module.exports.getMap = function (cb) {
   request
-    .get('http://' + config.gameserver.ip + '/feed/dedicated-server-stats-map.jpg?code=' + config.gameserver.code + '&quality=100&size=1024')
-    .end(function(err, map) {
-      if(err){
+    .get('http://' + config.SERVER_IP + '/feed/dedicated-server-stats-map.jpg?code=' + config.SERVER_KEY + '&quality=100&size=2048')
+    .end(function (err, map) {
+      if (err) {
         debug(err)
       }
       cb(map)
     })
 }
 
-module.exports.getEntities = function(cb){
+module.exports.getEntities = function (cb) {
   //http://176.57.171.68:8130/feed/dedicated-server-stats.xml?code=PD2oeshz
   request
-    .get('http://' + config.gameserver.ip + '/feed/dedicated-server-stats.xml?code=' + config.gameserver.code)
+    .get('http://' + config.SERVER_IP + '/feed/dedicated-server-stats.xml?code=' + config.SERVER_KEY)
     .end(function (err, xml) {
-      if(err){
+      if (err) {
         debug(err)
       }
-      var result = convert2json(xml.body)
-      cb(result.Server)
+      var result = util.convert2json(xml.body)
+      cb({
+        server: new Server(result.Server._attributes),
+        slots: new Slots(result.Server.Slots._attributes),
+        players: Player.getPlayers(result.Server.Slots.Player),
+        vehicles: Vehicle.getVehicles(result.Server.Vehicles.Vehicle)
+      })
     })
 }
 
-module.exports.getSavegame = function(cb){
+module.exports.getSavegame = function (cb) {
   //http://176.57.171.68:8130/feed/dedicated-server-savegame.html?code=PD2oeshz&file=careerSavegame
   request
-    .get('http://' + config.gameserver.ip + '/feed/dedicated-server-savegame.html?code=' + config.gameserver.code + '&file=careerSavegame')
+    .get('http://' + config.SERVER_IP + '/feed/dedicated-server-savegame.html?code=' + config.SERVER_KEY + '&file=careerSavegame')
     .end(function (err, xml) {
-      if(err){
+      if (err) {
         debug(err)
       }
-      var result = convert2json(xml.body)
-      cb(result.careerSavegame)
+      var result = util.convert2json(xml.body)
+      cb(new Game(result.careerSavegame))
     })
-}
-
-module.exports.getEconomy = function(cb){
-  cb(null)
-  //http://176.57.171.68:8130/feed/dedicated-server-savegame.html?code=PD2oeshz&file=economy
-  // request
-  //   .get('http://' + config.gameserver.ip + '/feed/dedicated-server-savegame.html?code=' + config.gameserver.code + '&file=economy')
-  //   .end(function (err, xml) {
-  //     if(err){
-  //       debug(err)
-  //     }
-  //     cb(convert2json(xml.body))
-  //   })
 }

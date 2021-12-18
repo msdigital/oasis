@@ -1,6 +1,7 @@
 # Oasis
 
 **Live Map for Farming Simulator 22**  
+
 While playing Farming Simulator 19, i was wondering if it's possible to have some kind of "out of game" live map.  
 After some quick research (basically clicking through the dedicated server administration, i found some xml files with interesting informations.  
 And here we are... "Oasis" a Farming Simulator Live Map.

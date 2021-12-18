@@ -1,6 +1,6 @@
 # Oasis
 
-**Live Map for Farming Simulator 22**  
+## Live Map for Farming Simulator 22
 
 While playing Farming Simulator 19, i was wondering if it's possible to have some kind of "out of game" live map.  
 After some quick research (basically clicking through the dedicated server administration, i found some xml files with interesting informations.  
@@ -12,7 +12,7 @@ And here we are... "Oasis" a Farming Simulator Live Map.
 * npm > 7.24.1
 * Farming Simulator 22 Server ;)
 
-_Works best on linux hosts ;)_
+Works best on linux hosts ;)
 
 ## Run Oasis locally
 
@@ -35,7 +35,6 @@ This app uses dotenv, just create an `.env` file in the root folder and add the 
 | WEB_PORT  | The port the app will use to run (ex. 3000)  |
 | SERVER_IP  | The game server ip and port (ex. 127.0.0.1:1234)  |
 | SERVER_KEY  | Some kind of secret key, should look something like this "fGL0Dayr"  |
-| REPO  | Provide your repository if you want to use pm2 deployment functionalities  |
 
 You may find your servers IP and key in the Dedicated Server Administration under Settings ->Miscellaneous.  
 If you, for example, take a look at the Link XML, you will see the IP, Port and the "code" which is used in this project as SERVER_KEY.
@@ -43,11 +42,6 @@ If you, for example, take a look at the Link XML, you will see the IP, Port and 
 ## Run Oasis on a server
 
 ### **_I do not provide support for installation and hosting!_**
-
-This project runs with `pm2` node process manager.  
-Deployment configured in `ecosystem.config.js` and by env variables above.
-
-*DNS configuration etc. are up to the host.*
 
 ## Authors
 

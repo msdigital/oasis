@@ -1,5 +1,6 @@
 # Custom Ignores, Sublime IDE for example
 *.sublime-*
+*.code-*
 security/
 *.psd
 # Logs

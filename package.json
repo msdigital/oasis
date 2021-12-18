@@ -1,6 +1,6 @@
 {
   "name": "oasis",
-  "version": "1.22.0",
+  "version": "1.22.1",
   "description": "Live Map for Farming Simulator 22",
   "main": "server/app.js",
   "private": false,

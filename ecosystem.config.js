@@ -8,9 +8,9 @@ const TARGET_SERVER_HOST = process.env.TARGET_SERVER_HOST ? process.env.TARGET_S
 // Target server username
 const TARGET_SERVER_USER = process.env.TARGET_SERVER_USER ? process.env.TARGET_SERVER_USER.trim() : '';
 // Target server application path
-const TARGET_SERVER_APP_PATH = `/home/${TARGET_SERVER_USER}/www/`+config.name;
+const TARGET_SERVER_APP_PATH = `/home/${TARGET_SERVER_USER}/www/${PROJECT_NAME}`;
 // Your repository
-const REPO = `git@github.com:msdigital/${PROJECT_NAME}.git`;
+const REPO = config.REPO;
 
 module.exports = {
   apps: [

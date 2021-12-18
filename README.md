@@ -1,12 +1,18 @@
 # Oasis
 
-Live Map for Farming Simulator 22
+**Live Map for Farming Simulator 22**  
+
+While playing Farming Simulator 19, i was wondering if it's possible to have some kind of "out of game" live map.  
+After some quick research (basically clicking through the dedicated server administration, i found some xml files with interesting informations.  
+And here we are... "Oasis" a Farming Simulator Live Map.
 
 ## Prerequisites
 
-* Works best on linux hosts ;)
 * node > 16.9.1
 * npm > 7.24.1
+* Farming Simulator 22 Server ;)
+
+_Works best on linux hosts ;)_
 
 ## Run Oasis locally
 
@@ -19,9 +25,9 @@ Live Map for Farming Simulator 22
 
 ### Run Oasis
 
-The configuration is pretty easy.
-Just provide the following settings as environment variables to your node process
-_or_
+The configuration is pretty easy.  
+Just provide the following settings as environment variables to your node process  
+_or_  
 This app uses dotenv, just create an `.env` file in the root folder and add the following variables to it.
 
 | Variable  | Description |
@@ -29,18 +35,20 @@ This app uses dotenv, just create an `.env` file in the root folder and add the 
 | WEB_PORT  | The port the app will use to run (ex. 3000)  |
 | SERVER_IP  | The game server ip and port (ex. 127.0.0.1:1234)  |
 | SERVER_KEY  | Some kind of secret key, should look something like this "fGL0Dayr"  |
+| REPO  | Provide your repository if you want to use pm2 deployment functionalities  |
 
-The Website is accessed via `localhost:3000`
+You may find your servers IP and key in the Dedicated Server Administration under Settings ->Miscellaneous.  
+If you, for example, take a look at the Link XML, you will see the IP, Port and the "code" which is used in this project as SERVER_KEY.
 
 ## Run Oasis on a server
 
 ### **_I do not provide support for installation and hosting!_**
 
-This project runs with `pm2` node process manager.
-Deployment configured in `ecosystem.config.js`.
+This project runs with `pm2` node process manager.  
+Deployment configured in `ecosystem.config.js` and by env variables above.
 
 *DNS configuration etc. are up to the host.*
 
 ## Authors
 
-This project is licensed under GNU Lesser General Public License version 3 (GNU LGPLv3) - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under GNU Lesser General Public License version 3 (GNU LGPLv3) - see the [LICENSE.md](LICENSE.md) file for details.

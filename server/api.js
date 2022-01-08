@@ -5,13 +5,14 @@ var request = require('superagent')
   , { Server, Slots } = require('./model/server')
   , Player = require('./model/player')
   , Vehicle = require('./model/vehicle')
+  , logger = require('./lib/logger');
 
 module.exports.getMap = function (cb) {
   request
     .get('http://' + config.SERVER_IP + '/feed/dedicated-server-stats-map.jpg?code=' + config.SERVER_KEY + '&quality=100&size=2048')
     .end(function (err, map) {
       if (err) {
-        debug(err)
+        logger.error(err);
       }
       cb(map)
     })
@@ -23,7 +24,7 @@ module.exports.getEntities = function (cb) {
     .get('http://' + config.SERVER_IP + '/feed/dedicated-server-stats.xml?code=' + config.SERVER_KEY)
     .end(function (err, xml) {
       if (err) {
-        debug(err)
+        logger.error(err);
       }
       var result = util.convert2json(xml.body)
       cb({
@@ -41,7 +42,7 @@ module.exports.getSavegame = function (cb) {
     .get('http://' + config.SERVER_IP + '/feed/dedicated-server-savegame.html?code=' + config.SERVER_KEY + '&file=careerSavegame')
     .end(function (err, xml) {
       if (err) {
-        debug(err)
+        logger.error(err);
       }
       var result = util.convert2json(xml.body)
       cb(new Game(result.careerSavegame))

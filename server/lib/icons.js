@@ -21,7 +21,7 @@ module.exports = {
     "icon": "harvester.png",
     "desc": "Harvester",
     "width": 32,
-    "height": 32
+    "height": 25
   },
   "trailer": {
     "icon": "trailer.png",

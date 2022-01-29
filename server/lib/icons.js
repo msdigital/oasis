@@ -21,11 +21,17 @@ module.exports = {
     "icon": "harvester.png",
     "desc": "Harvester",
     "width": 32,
-    "height": 32
+    "height": 25
   },
   "trailer": {
     "icon": "trailer.png",
-    "desc": "Trailer",
+    "desc": "Trailers",
+    "width": 32,
+    "height": 32
+  },
+  "cuttertrailers": {
+    "icon": "trailer.png",
+    "desc": "Cuttertrailers",
     "width": 32,
     "height": 32
   },
@@ -33,18 +39,49 @@ module.exports = {
     "icon": "cars.png",
     "desc": "Car",
     "width": 32,
-    "height": 32
+    "height": 24
   },
   "trucks": {
     "icon": "trucks.png",
     "desc": "Trucks",
     "width": 32,
-    "height": 32
+    "height": 22
   },
   "tractor": {
     "icon": "tractor.png",
     "desc": "Tractor",
     "width": 32,
     "height": 32
+
+  },
+  "tractorsl": {
+    "icon": "tractor.png",
+    "desc": "Tractor",
+    "width": 32,
+    "height": 32
+  },
+  "cultivators": {
+    "icon": "cultivator.png",
+    "desc": "Cultivator",
+    "width": 32,
+    "height": 20
+  },
+  "forklifts": {
+    "icon": "forklift.png",
+    "desc": "Forklifts",
+    "width": 32,
+    "height": 34
+  },
+  "seeders": {
+    "icon": "seeder.png",
+    "desc": "Seeders",
+    "width": 32,
+    "height": 20
+  },
+  "bigbags": {
+    "icon": "crate.png",
+    "desc": "Bigbags",
+    "width": 18,
+    "height": 22
   },
 };

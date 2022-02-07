@@ -19,7 +19,6 @@ module.exports.Vehicle = function(vehicle){
   this.posy = coords.y
   this.type = vehicle._attributes.type
   this.category = vehicle._attributes.category
-  this.type = vehicle._attributes.type
-  this.isAI = vehicle._attributes.isAIActive
   this.icon = util.getIcon(vehicle._attributes)
+  this.popup = util.getIconPopup(vehicle._attributes)
 }

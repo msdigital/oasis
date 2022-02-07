@@ -15,7 +15,7 @@ server.use(express.static(path.join(__dirname, '../public')));
 
 server.use(function(req, res, next){
   res.locals.config = config;
-  res.locals.icons = require('./lib/icons')
+  res.locals.icons = require('./lib/icons').icons
   next();
 });
 

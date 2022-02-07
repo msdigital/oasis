@@ -8,11 +8,7 @@ module.exports.createObjects = function(objects){
           type: "Point",
           coordinates: [obj.posx, obj.posy]
         },
-        properties: {
-          name: obj.name,
-          icon: obj.icon,
-          desc: obj.icon.desc
-        }
+        properties: obj
       });
     }
   })

@@ -11,11 +11,11 @@ map.on('drag', function() {
 
 function onEachFeature(feature, layer) {
   if (layer instanceof L.Marker) {
-    layer.bindPopup(layer.feature.properties.name)
+    layer.bindPopup(layer.feature.properties.popup)
     var customIcon = L.icon({
       iconUrl: '/images/icons/'+layer.feature.properties.icon.icon,
-      iconSize: [layer.feature.properties.icon.width, layer.feature.properties.icon.height],
-      iconAnchor: [(layer.feature.properties.icon.width/2), (layer.feature.properties.icon.height/2)],
+      iconSize: [layer.feature.properties.icon.dimension, layer.feature.properties.icon.dimension],
+      iconAnchor: [(layer.feature.properties.icon.dimension / 2), (layer.feature.properties.icon.dimension/2)],
       popupAnchor: [0, -10]
     })
     layer.setIcon(customIcon)

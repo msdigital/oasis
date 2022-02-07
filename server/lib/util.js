@@ -1,5 +1,5 @@
 var xjs = require('xml-js')
-  , icons = require('./icons')
+  , icons = require('./icons').type
 
 module.exports.convert2json = function (xml) {
   var res = xjs.xml2js(xml, { compact: true, spaces: 2 });
@@ -17,6 +17,34 @@ module.exports.getIcon = function(object){
     return icons[object.type.toLowerCase()]
   }
   return icons['default']
+}
+
+module.exports.getIconPopup = function(object) {
+  var popup = '<b>' + object.name +'</b>'
+
+  popup += '<small>'
+  if (!isNaN(filterFloat(object.fillLevels))) {
+    if (object.fillTypes.toLowerCase() != 'unknown') {
+      popup += '<br><span style="text-transform: capitalize;">' + object.fillTypes.toLowerCase() + '</span> (' + object.fillLevels + ')'
+    }
+    else if (object.fillTypes.toLowerCase() == 'unknown') {
+      popup += '<br>Empty'
+    }
+  }
+
+  if (object.isAIActive=="true"){
+    popup += '<br>Helper: active'
+  }
+  popup += '</small>'
+
+  return popup;
+}
+
+var filterFloat = function (value) {
+  if (/^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/
+    .test(value))
+    return Number(value);
+  return NaN;
 }
 
 module.exports.calcCoords = function(x,y){

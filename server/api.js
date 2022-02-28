@@ -31,7 +31,7 @@ module.exports.getEntities = function (cb) {
         server: new Server(result.Server._attributes),
         slots: new Slots(result.Server.Slots._attributes),
         players: Player.getPlayers(result.Server.Slots.Player),
-        vehicles: Vehicle.getVehicles(result.Server.Vehicles.Vehicle)
+        vehicles: Vehicle.getVehicles(result.Server.Vehicles.Vehicle, result.Server._attributes.mapSize)
       })
     })
 }

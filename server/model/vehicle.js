@@ -1,8 +1,16 @@
 var lodash = require('lodash')
   , util = require('../lib/util')
 
-module.exports.getVehicles = function(vehicles){
+var mapSize
+
+module.exports.getVehicles = function(vehicles, map){
   var results = []
+  mapSize = map;
+  
+  if (!Array.isArray(vehicles)){
+    vehicles = [vehicles];
+  }
+
   vehicles.forEach(vehicle => {
     if(!lodash.isEmpty(vehicle)){
       results.push(new this.Vehicle(vehicle))
@@ -12,7 +20,7 @@ module.exports.getVehicles = function(vehicles){
 }
 
 module.exports.Vehicle = function(vehicle){
-  var coords = util.calcCoords(vehicle._attributes.x, vehicle._attributes.z)
+  var coords = util.calcCoords(mapSize, vehicle._attributes.x, vehicle._attributes.z)
 
   this.name = vehicle._attributes.name
   this.posx = coords.x

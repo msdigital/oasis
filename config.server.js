@@ -26,6 +26,6 @@ for (const [k,v] of Object.entries(config)){
 
 if (errored) process.exit();
 
-config.VERSION = process.env.npm_package_version | 'V1.22.5';
+config.VERSION = process.env.npm_package_version ? process.env.npm_package_version : 'V1.22.5';
 
 module.exports = config;

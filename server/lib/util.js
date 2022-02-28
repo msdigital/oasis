@@ -47,13 +47,13 @@ var filterFloat = function (value) {
   return NaN;
 }
 
-module.exports.calcCoords = function(x,y){
+module.exports.calcCoords = function(size, x,y){
   var newX = null
   var newY = null
 
   if(x!=null && y!=null) {
-    newX = (x/1024)*375
-    newY = ((y/1024)*375)*(-1)    
+    newX = (x / (size / 2))*375
+    newY = ((y / (size / 2))*375)*(-1)    
   }
 
   return {x: newX, y: newY}

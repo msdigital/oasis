@@ -1,3 +1,9 @@
+//////////////////////////////////////////////////////
+// DO NOT CHANGE THIS FILE IT MAY BREAK THE APP!
+//////////////////////////////////////////////////////
+// AENDERUNGEN AN DIESER DATEI KOENNEN DAZU FUEHREN
+// DASS DIE APP NICHT MEHR KORREKT FUNKTIONIERT!
+//////////////////////////////////////////////////////
 const { exitOnError } = require('./server/lib/logger');
 var logger = require('./server/lib/logger');
 
@@ -20,6 +26,6 @@ for (const [k,v] of Object.entries(config)){
 
 if (errored) process.exit();
 
-config.VERSION = process.env.npm_package_version;
+config.VERSION = process.env.npm_package_version | 'V1.22.5';
 
 module.exports = config;

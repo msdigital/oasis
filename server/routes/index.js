@@ -1,13 +1,8 @@
-const { json } = require('express');
-const logger = require('../lib/logger');
-
 var express = require('express')
   , router = express.Router()
   , async = require('async')
   , api = require('../api')
   , Geo = require('../lib/geojson')
-  , Player = require('../model/player')
-  , Vehicle = require('../model/vehicle')
 
 router.get('/api/map.jpg', function (req, res, next) {
   api.getMap((map) => {
@@ -22,6 +17,12 @@ router.get('*', function (req, res, next){
   api.getEntities((entities) => {
     _server = entities;
     next();
+  })
+})
+
+router.get('/mods', function (req, res, next) {
+  res.render('mods', {
+    server: _server.server
   })
 })
 

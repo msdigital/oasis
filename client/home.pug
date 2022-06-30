@@ -1,10 +1,8 @@
 extends index
 
 block content
-  .row
-    .col-xl-9
-      #map
-    .col-xl-3
+  .row.justify-content-center
+    .col-xl-2
       .card.mb-3.small.shadow-sm
         .card-header Currently Online (#{slots.onlineCount}/#{slots.maxCount})
         ul.list-group.list-group-flush
@@ -18,8 +16,11 @@ block content
           else
             li.list-group-item No Player online
         .card-footer
-          | Total Money:
+          | Money:
           span.float-end #{game.money}
+    .col-xl-auto
+      #map
+    .col-xl-2
       .card.mb-3.small.shadow-sm
         .card-header Icon Legend
         ul.list-group.list-group-flush

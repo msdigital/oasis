@@ -1,12 +1,12 @@
 {
   "name": "oasis",
-  "version": "1.22.5",
+  "version": "1.22.6",
   "description": "Live Map for Farming Simulator 22",
   "main": "server/app.js",
   "private": false,
   "scripts": {
-    "local": "DEV_ENV=local NODE_ENV=development DEBUG=*,-body-parser*,-express*,-knex*,-send*,-morgan*,-superagent* npm start",
-    "start": "nodemon server/app.js"
+    "local": "DEV_ENV=local NODE_ENV=development DEBUG=*,-body-parser*,-express*,-knex*,-send*,-morgan*,-superagent* nodemon -L server/app.js",
+    "start": "node server/app.js"
   },
   "repository": {
     "type": "git",

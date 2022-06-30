@@ -28,7 +28,7 @@ module.exports.getEntities = function (cb) {
       }
       var result = util.convert2json(xml.body)
       cb({
-        server: new Server(result.Server._attributes),
+        server: new Server(result.Server),
         slots: new Slots(result.Server.Slots._attributes),
         players: Player.getPlayers(result.Server.Slots.Player),
         vehicles: Vehicle.getVehicles(result.Server.Vehicles.Vehicle, result.Server._attributes.mapSize)

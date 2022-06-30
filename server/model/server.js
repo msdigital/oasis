@@ -26,8 +26,6 @@ var getMods = function(mods){
 }
 
 var Mod = function(mod) {
-  // link = http://176.57.169.251:8600/mods/FS22_1970sCowshed.zip
-  // download all active = http://176.57.169.251:8600/all_mods_download?onlyActive=true
   this.name = mod._text
   this.filename = mod._attributes.name
   this.author = mod._attributes.author

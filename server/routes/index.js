@@ -28,7 +28,7 @@ router.get('/mods', function (req, res, next) {
 
 router.get('/api/geo.json', function (req, res, next) {
   var objects = [...Geo.createObjects(_server.players), ...Geo.createObjects(_server.vehicles)];
-  res.send(Geo.createGeoJson(objects));
+  res.json(Geo.createGeoJson(objects));
 })
 
 router.get('/', function(req, res, next){

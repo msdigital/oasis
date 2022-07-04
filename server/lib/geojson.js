@@ -20,5 +20,5 @@ module.exports.createGeoJson = function(objects) {
     type: "FeatureCollection",
     features: objects,
   }
-  return JSON.stringify(json);
+  return json;
 }

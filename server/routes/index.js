@@ -20,6 +20,27 @@ router.get('*', function (req, res, next){
   })
 })
 
+router.get('/economy', function(req, res, next){
+  async.waterfall([
+    function (cb) {
+      api.getSavegame((game) => {
+        cb(null, game.economicDifficulty)
+      })
+    },
+    function (difficulty, cb) {
+      api.getEconomy((economy) => {
+        economy.calculateEconomy(difficulty,cb)
+      })
+    }
+  ],
+  function(err, result){
+    res.render('economy', {
+      server: _server.server,
+      economy: result //economy callback
+    })
+  })
+})
+
 router.get('/mods', function (req, res, next) {
   res.render('mods', {
     server: _server.server

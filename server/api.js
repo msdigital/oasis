@@ -3,6 +3,7 @@ var request = require('superagent')
   , config = require('../config.server')
   , { Game } = require('./model/game')
   , { Server, Slots } = require('./model/server')
+  , { Economy } = require('./model/economy')
   , Player = require('./model/player')
   , Vehicle = require('./model/vehicle')
   , logger = require('./lib/logger');
@@ -46,5 +47,17 @@ module.exports.getSavegame = function (cb) {
       }
       var result = util.convert2json(xml.body)
       cb(new Game(result.careerSavegame))
+    })
+}
+
+module.exports.getEconomy = function(cb) {
+  request
+    .get('http://176.57.169.251:8600/feed/dedicated-server-savegame.html?code=M8La9eRC&file=economy')
+    .end(function (err, xml) {
+      if (err) {
+        logger.error(err);
+      }
+      var result = util.convert2json(xml.body)
+      cb(new Economy(result.economy))
     })
 }

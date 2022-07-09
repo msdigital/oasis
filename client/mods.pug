@@ -4,10 +4,8 @@ block content
   .row.justify-content-center
     .col-xl-8
       .card.mb-3.small.shadow-sm
-        .card-header
-          | Server Mods
-          span.float-end
-            | Download all Mods at once
+        .card-header=__("Server Mods")
+          span.float-end=__("Download all Mods at once")
             a(href='http://' + config.SERVER_IP + '/all_mods_download?onlyActive=true').ms-2
               img(src="/images/saveAllIcon.png" height='20')
         if server.mods.length>1
@@ -15,10 +13,10 @@ block content
             table.table.table-striped.table-sm
               thead
                 tr
-                  th="Name"
-                  th="Author"
-                  th="Filename"
-                  th="Download"
+                  th=__("Name")
+                  th=__("Author")
+                  th=__("Filename")
+                  th=__("Download")
               tbody.table-group-divider
                 each mod in server.mods
                   tr
@@ -29,4 +27,4 @@ block content
                       a(href='http://' + config.SERVER_IP + '/mods/' + mod.filename + '.zip').float-end
                         img(src="/images/saveIcon.png" height='20').me-3
         else
-          li.list-group-item No Mods installed
+          li.list-group-item=__("No Mods installed")

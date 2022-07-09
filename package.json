@@ -5,7 +5,7 @@
   "main": "server/app.js",
   "private": false,
   "scripts": {
-    "local": "DEV_ENV=local NODE_ENV=development DEBUG=*,-body-parser*,-express*,-knex*,-send*,-morgan*,-superagent* nodemon -L server/app.js",
+    "local": "DEV_ENV=local NODE_ENV=development DEBUG=*,-body-parser*,-express*,-knex*,-send*,-winston*,-superagent* nodemon -L server/app.js --ignore '**/locales/**'",
     "start": "node server/app.js"
   },
   "repository": {
@@ -24,6 +24,7 @@
     "dotenv": "^10.0.0",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "i18n": "^0.15.0",
     "leaflet": "^1.7.1",
     "lodash": "^4.17.15",
     "moment": "^2.29.2",

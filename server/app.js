@@ -1,7 +1,9 @@
 const express = require('express')
   , createError = require('http-errors')
+  , cookieParser = require('cookie-parser')
   , path = require('path')
   , config = require('../config.server')
+  , i18n = require('./lib/i18n')
   , logger = require('./lib/logger');
 
 const server = express();
@@ -20,8 +22,14 @@ server.use(function(req, res, next){
   next();
 });
 
-var router = require('./routes/index');
-server.use('/',router);
+server.use(cookieParser())
+server.use(i18n);
+
+var viewRouter = require('./routes/index')
+  , apiRouter = require('./routes/api');
+
+server.use('/api',apiRouter)
+server.use('/', viewRouter);
 
 server.use(function(req, res, next){
   next(createError(404));

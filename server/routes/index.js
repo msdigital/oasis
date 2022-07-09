@@ -2,13 +2,11 @@ var express = require('express')
   , router = express.Router()
   , async = require('async')
   , api = require('../api')
-  , Geo = require('../lib/geojson')
 
-router.get('/api/map.jpg', function (req, res, next) {
-  api.getMap((map) => {
-    res.set({ 'Content-Type': 'image/png' });
-    res.send(map.body);
-  })
+router.get('/lang/:lang', function (req, res) {
+  res.setLocale(req.params.lang)
+  res.cookie('lang', req.params.lang);
+  res.redirect('back');
 })
 
 var _server = null;
@@ -45,11 +43,6 @@ router.get('/mods', function (req, res, next) {
   res.render('mods', {
     server: _server.server
   })
-})
-
-router.get('/api/geo.json', function (req, res, next) {
-  var objects = [...Geo.createObjects(_server.players), ...Geo.createObjects(_server.vehicles)];
-  res.json(Geo.createGeoJson(objects));
 })
 
 router.get('/', function(req, res, next){

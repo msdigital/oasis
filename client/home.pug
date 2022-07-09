@@ -4,7 +4,8 @@ block content
   .row.justify-content-center
     .col-xl-2
       .card.mb-3.small.shadow-sm
-        .card-header Currently Online (#{slots.onlineCount}/#{slots.maxCount})
+        .card-header=__("Currently Online")
+          | &nbsp;(#{slots.onlineCount}/#{slots.maxCount})
         ul.list-group.list-group-flush
           if players.length>0
             each player in players
@@ -14,32 +15,31 @@ block content
                     | admin
                 span.float-end=player.uptime
           else
-            li.list-group-item No Player online
-        .card-footer
-          | Money:
+            li.list-group-item=__("No Player online")
+        .card-footer=__("Money") + ":"
           span.float-end #{game.money}
     .col-xl-auto
       #map
     .col-xl-2
       .card.mb-3.small.shadow-sm
-        .card-header Icon Legend
+        .card-header=__("Icon Legend")
         ul.list-group.list-group-flush
           each icon in icons
             li.list-group-item
               img(src="/images/icons/"+icon.icon height='20').me-3
-              | #{icon.desc}
+              =__("entity_" + icon.desc)
       .card.mb-3.small.shadow-sm
-        .card-header="Server Details"
+        .card-header=__("Server Details")
         ul.list-group.list-group-flush
           li.list-group-item
-            b Map
+            b=__("Map")
             span.float-end #{game.mapname}
           li.list-group-item
-            b Time Scale
+            b=__("Time Scale")
             span.float-end #{game.timeScale}
           li.list-group-item
-            b Save Interval
+            b=__("Save Interval")
             span.float-end #{game.saveInterval}
           li.list-group-item
-            b Server-Version
+            b=__("Server-Version")
             span.float-end #{server.version}

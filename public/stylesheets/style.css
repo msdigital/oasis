@@ -83,3 +83,8 @@ main > .container {
 .eco-table-hover>tbody>tr.eco-table-active>* {
   background-color: #9f9f9f;
 }
+
+.dropdown-menu {
+  font-size: 14px !important;
+  min-width: auto;
+}

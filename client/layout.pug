@@ -1,20 +1,3 @@
-mixin navigation2
-  nav.navbar.fixed-top.navbar-expand-lg.navbar-dark
-    .container
-      .row.justify-content-center
-        .col-xl-10
-          .container
-            a.navbar-brand(href='/')
-              img.d-inline-block.align-top(src="images/Oasis_Favicon.png", height='30', alt='')
-              span.d-inline-block.ms-2 #{server.name} - Live Map
-            ul.navbar-nav
-              li.nav-item
-                a.nav-link(href='/', class=currentPage==="/"?"active":"") Map
-              li.nav-item
-                a.nav-link(href='/mods', class=currentPage==="/mods"?"active":"") Mods
-              li.nav-item
-                a.nav-link(href='/mods', class=currentPage==="/economy"?"active":"") Economy
-
 mixin navigation
   nav.navbar.fixed-top.navbar-expand-lg.navbar-dark
     .container
@@ -26,6 +9,8 @@ mixin navigation
           a.nav-link(href='/', class=currentPage==="/"?"active":"") Map
         li.nav-item
           a.nav-link(href='/mods', class=currentPage==="/mods"?"active":"") Mods
+        li.nav-item
+          a.nav-link(href='/economy', class=currentPage==="/economy"?"active":"") Economy
 
 mixin scripts()
   script(type='text/javascript').

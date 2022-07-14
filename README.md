@@ -14,14 +14,12 @@ And here we are... "Oasis" a Farming Simulator Live Map.
 4. Commit your translations and create a pull-request and add msdigital as a reviewer
 5. Done
 
-Thanks for your contribution!
-I will check the translations and add them to a release package from time to time.
-
+Thanks for your contribution! I will check the translations and add them to a release package from time to time.
 
 ## Prerequisites
 
-* node > 16.9.1
-* npm > 7.24.1
+* node > 16.16.0
+* npm > 8.11.0
 * Farming Simulator 22 Server ;)
 
 Works best on linux hosts ;)
@@ -58,4 +56,4 @@ If you, for example, take a look at the Link XML, you will see the IP, Port and 
 
 ## Authors
 
-This project is licensed under GNU Lesser General Public License version 3 (GNU LGPLv3) - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under GNU Lesser General Public License version 3 (GNU LGPLv3) - see the [LICENSE](LICENSE) file for details.

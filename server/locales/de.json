@@ -24,7 +24,7 @@
 	"entity_Bigbags": "Big Bag",
 	"entity_Train": "Zug",
 	"entity_Diverse": "Diverse",
-"product_WHEAT": "Weizen",
+	"product_WHEAT": "Weizen",
 	"product_BARLEY": "Gerste",
 	"product_OAT": "Hafer",
 	"product_CANOLA": "Raps",
@@ -89,5 +89,6 @@
 	"Download": "Download",
 	"Language": "Sprache",
 	"English": "Englisch",
-	"German": "Deutsch"
+	"German": "Deutsch",
+	"No Player online": "Kein Spieler online"
 }

@@ -49,5 +49,5 @@ server.use(function(err, req, res, next){
 var serverPort = config.WEB_PORT >= 0 ? config.WEB_PORT : 3000;
 
 server.listen(serverPort, () => {
-  logger.info('Oasis started on port ' + serverPort);
+  logger.info('Oasis ' + config.VERSION + ' started on port ' + serverPort);
 })

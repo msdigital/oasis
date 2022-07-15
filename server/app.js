@@ -4,6 +4,7 @@ const express = require('express')
   , path = require('path')
   , config = require('../config.server')
   , i18n = require('./lib/i18n')
+  , api = require('./api')
   , logger = require('./lib/logger');
 
 const server = express();
@@ -31,20 +32,32 @@ var viewRouter = require('./routes/index')
 server.use('/api',apiRouter)
 server.use('/', viewRouter);
 
-server.use(function(req, res, next){
+server.use(function (req, res, next) {
   next(createError(404));
 })
 
-server.use(function(err, req, res, next){
-  logger.JSON(err.message);
-  res.status(err.status || 500);
-  res.render('error',{
-    error: {
-      status: 500,
-      message: err.message
-    }
-  });
+server.use(function(err, req, res, next) {
+  logger.error(err.message + ': ' + err.statusCode + ' ' + req.method + ' ' + req.originalUrl)
+  api.getServerOnly((server) => {
+    res.status(err.statusCode).render('error', {
+      server: server,
+      error: err
+    })
+  })
 })
+
+// server.use(errorRouter);
+
+// server.use(function(err, req, res, next){
+//   logger.JSON(err.message);
+//   res.status(err.status || 500);
+//   res.render('error',{
+//     error: {
+//       status: 500,
+//       message: err.message
+//     }
+//   });
+// })
 
 var serverPort = config.WEB_PORT >= 0 ? config.WEB_PORT : 3000;
 

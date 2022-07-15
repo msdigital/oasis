@@ -88,5 +88,6 @@
 	"Name": "Name",
 	"Author": "Author",
 	"Filename": "Filename",
-	"Download": "Download"
+	"Download": "Download",
+	"Oops something went wrong...!": "Oops something went wrong...!"
 }

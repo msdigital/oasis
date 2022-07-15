@@ -19,8 +19,7 @@ module.exports.getMap = function (cb) {
     })
 }
 
-module.exports.getEntities = function (cb) {
-  //http://176.57.171.68:8130/feed/dedicated-server-stats.xml?code=PD2oeshz
+var getServerStatsXml = function(cb) {
   request
     .get('http://' + config.SERVER_IP + '/feed/dedicated-server-stats.xml?code=' + config.SERVER_KEY)
     .end(function (err, xml) {
@@ -28,17 +27,28 @@ module.exports.getEntities = function (cb) {
         logger.error(err);
       }
       var result = util.convert2json(xml.body)
-      cb({
-        server: new Server(result.Server),
-        slots: new Slots(result.Server.Slots._attributes),
-        players: Player.getPlayers(result.Server.Slots.Player),
-        vehicles: Vehicle.getVehicles(result.Server.Vehicles.Vehicle, result.Server._attributes.mapSize)
-      })
+      cb(result)
     })
 }
 
+module.exports.getServerOnly = function (cb) {
+  getServerStatsXml((result) => {
+    cb(new Server(result.Server))
+  })
+}
+
+module.exports.getEntities = function (cb) {
+  getServerStatsXml((result) => {
+    cb({
+      server: new Server(result.Server),
+      slots: new Slots(result.Server.Slots._attributes),
+      players: Player.getPlayers(result.Server.Slots.Player),
+      vehicles: Vehicle.getVehicles(result.Server.Vehicles.Vehicle, result.Server._attributes.mapSize)
+    })
+  })
+}
+
 module.exports.getSavegame = function (cb) {
-  //http://176.57.171.68:8130/feed/dedicated-server-savegame.html?code=PD2oeshz&file=careerSavegame
   request
     .get('http://' + config.SERVER_IP + '/feed/dedicated-server-savegame.html?code=' + config.SERVER_KEY + '&file=careerSavegame')
     .end(function (err, xml) {

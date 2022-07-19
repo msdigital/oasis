@@ -1,12 +1,12 @@
 include layout
 
 doctype html
-html(lang="de").h-100
+html(lang="en").h-100
   head
-    title #{server.name} - Oasis #{config.VERSION}
+    title=server.name + " - Oasis " + config.VERSION
     meta(charset="utf-8")
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    meta(name="description", content=config.DESCRIPTION)
+    meta(name="description", content=server.name + " - Farming Simulator 22 Server - " + server.version + " - Oasis #{config.VERSION} - Farming Simulator 22 Live Map")
     meta(name="author", content="msdigital.ch")
     link(rel='shortcut icon', href='/images/Oasis_Favicon.png')
     link(rel='icon', type='image/png', href='/images/Oasis_Favicon.png', sizes='32x32')

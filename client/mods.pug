@@ -1,0 +1,30 @@
+extends index
+
+block content
+  .row.justify-content-center
+    .col-xl-8
+      .card.mb-3.small.shadow-sm
+        .card-header=__("Server Mods")
+          span.float-end=__("Download all Mods at once")
+            a(href='http://' + config.SERVER_IP + '/all_mods_download?onlyActive=true').ms-2
+              img(src="/images/saveAllIcon.png" height='20')
+        if server.mods.length>1
+          .table-responsive
+            table.table.table-striped.table-sm
+              thead
+                tr
+                  th=__("Name")
+                  th=__("Author")
+                  th=__("Filename")
+                  th=__("Download")
+              tbody.table-group-divider
+                each mod in server.mods
+                  tr
+                    td=mod.name + ' (' + mod.version + ')'
+                    td=mod.author
+                    td=mod.filename + '.zip'
+                    td
+                      a(href='http://' + config.SERVER_IP + '/mods/' + mod.filename + '.zip').float-end
+                        img(src="/images/saveIcon.png" height='20').me-3
+        else
+          li.list-group-item=__("No Mods installed")

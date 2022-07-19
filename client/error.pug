@@ -1,6 +1,8 @@
 extends index
 
 block content
-  h1= "Oops something went wrong..."
-  h2= error.status
-  pre #{error.message}
+  .row.justify-content-center
+    .text-center.mt-5
+      img(src='/images/construction.png' style='height:75px;').mb-5
+      h2=__("Oops something went wrong...!")
+      pre=error.statusCode + ' - ' + error.message

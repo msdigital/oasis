@@ -96,7 +96,7 @@ var types = {
   "trucks": icons.trucks,
   "watertrailer": icons.watertrailer,
   "fertilizerspreaders": icons.fertilizerspreaders,
-  "car": icons.car,
+  "cars": icons.car,
 }
 
 module.exports = {

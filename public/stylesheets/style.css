@@ -41,7 +41,7 @@ a:hover {
 }
 
 .container {
-  max-width: 1040px;
+  max-width: 1280px;
 }
 
 main > .container {
@@ -59,3 +59,32 @@ main > .container {
 
 #map{ height:750px; width:750px; }
 .leaflet-marker-icon { filter: drop-shadow(0 2px 1px #444); }
+
+.forecast {
+  text-align: right;
+}
+
+.forecast::after {
+  background-size: 7px 7px;
+  display: inline-block;
+  margin-left: 5px;
+  content: "";
+}
+
+.forecast-up::after {
+  content: "🟢";
+}
+
+.forecast-down::after {
+  content: "🔴";
+}
+
+.eco-table-hover>tbody>tr:hover>*,
+.eco-table-hover>tbody>tr.eco-table-active>* {
+  background-color: #9f9f9f;
+}
+
+.dropdown-menu {
+  font-size: 14px !important;
+  min-width: auto;
+}

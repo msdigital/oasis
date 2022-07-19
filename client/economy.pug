@@ -1,0 +1,29 @@
+extends index
+
+block content
+  .row.justify-content-center
+    .col-xl-12
+      .card.mb-3.small.shadow-sm
+        .card-header=__("Economy")
+        if economy.prices.length>0
+          .table-responsive
+            table.eco-table.table.table-striped.table-sm.eco-table-hover
+              thead
+                tr
+                  th=__("Product")
+                  each month in economy.months
+                    th= month
+              tbody.table-group-divider
+                each fillType in economy.prices
+                  if fillType.formattedPrices.length>0
+                    tr
+                      td=__("product_"+fillType.name)
+                      - var nextPrice = 0
+                      - var maxValIx = fillType.prices.indexOf(Math.max(...fillType.prices))
+                      - var minValIx = fillType.prices.indexOf(Math.min(...fillType.prices))
+                      each typePrice, ix in fillType.formattedPrices
+                        if ix == 11
+                          - nextPrice = fillType.prices[0]
+                        else
+                          - nextPrice = fillType.prices[ix+1]
+                        td(class=((nextPrice<fillType.prices[ix])?"forecast-down":"forecast-up"), style=((ix==maxValIx)?"background-color:#00800094;font-weight:bolder;":((ix==minValIx)?"color:red;font-weight:bolder;":""))).forecast=typePrice

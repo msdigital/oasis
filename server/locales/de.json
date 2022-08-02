@@ -91,5 +91,12 @@
 	"English": "Englisch",
 	"German": "Deutsch",
 	"No Player online": "Kein Spieler online",
-	"Oops something went wrong...!": "Ups, da ist etwas schief gelaufen...!"
+	"Oops something went wrong...!": "Ups, da ist etwas schief gelaufen...!",
+	"entity_Tractor Large": "Grosstraktor",
+	"entity_Tractor Medium": "Mittelgrosser Traktor",
+	"entity_Tractor Small": "Kompakttraktor",
+	"entity_Baler": "Ballenpresse",
+	"entity_Baleloader": "Ballensammler",
+	"entity_Plow": "Pflug",
+	"entity_Product Pallet": "Produkt Pallette"
 }

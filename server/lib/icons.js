@@ -34,9 +34,19 @@ var icons = {
     "desc": "Trucks",
     "dimension": 40
   },
-  "tractor": {
-    "icon": "tractor.png",
-    "desc": "Tractor",
+  "tractorsl": {
+    "icon": "tractorsl.png",
+    "desc": "Tractor Large",
+    "dimension": 32
+  },
+  "tractorsm": {
+    "icon": "tractorsm.png",
+    "desc": "Tractor Medium",
+    "dimension": 32
+  },
+  "tractorss": {
+    "icon": "tractorsm.png",
+    "desc": "Tractor Small",
     "dimension": 32
   },
   "cultivator": {
@@ -64,6 +74,26 @@ var icons = {
     "desc": "Seeders",
     "dimension": 32
   },
+  "balers": {
+    "icon": "balers.png",
+    "desc": "Baler",
+    "dimension": 32
+  },
+  "baleloaders": {
+    "icon": "baleloaders.png",
+    "desc": "Baleloader",
+    "dimension": 32
+  },
+  "plows": {
+    "icon": "plows.png",
+    "desc": "Plow",
+    "dimension": 32
+  },
+  "pallet": {
+    "icon": "pallet.png",
+    "desc": "Product Pallet",
+    "dimension": 16
+  },
   "bigbags": {
     "icon": "crate.png",
     "desc": "Bigbags",
@@ -90,12 +120,18 @@ var types = {
   "trailer": icons.trailer,
   "seeders": icons.seeders,
   "bigbags": icons.bigbags,
+  "pallet": icons.pallet,
   "forklifts": icons.forklifts,
   "cultivator": icons.cultivator,
-  "tractor": icons.tractor,
+  "tractorsl": icons.tractorsl,
+  "tractorsm": icons.tractorsm,
+  "tractorsm": icons.tractorss,
   "trucks": icons.trucks,
   "watertrailer": icons.watertrailer,
   "fertilizerspreaders": icons.fertilizerspreaders,
+  "plows": icons.plows,
+  "balers": icons.balers,
+  "baleloaders": icons.baleloaders,
   "cars": icons.car,
 }
 

@@ -89,5 +89,12 @@
 	"Author": "Author",
 	"Filename": "Filename",
 	"Download": "Download",
-	"Oops something went wrong...!": "Oops something went wrong...!"
+	"Oops something went wrong...!": "Oops something went wrong...!",
+	"entity_Tractor Large": "Large Tractors",
+	"entity_Tractor Medium": "Medium Tractors",
+	"entity_Tractor Small": "Small Tractors",
+	"entity_Baler": "Baler",
+	"entity_Baleloader": "Baleloader",
+	"entity_Plow": "Plow",
+	"entity_Product Pallet": "Product Pallet"
 }

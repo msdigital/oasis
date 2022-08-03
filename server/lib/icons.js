@@ -45,7 +45,7 @@ var icons = {
     "dimension": 32
   },
   "tractorss": {
-    "icon": "tractorsm.png",
+    "icon": "tractorss.png",
     "desc": "Tractor Small",
     "dimension": 32
   },
@@ -125,7 +125,7 @@ var types = {
   "cultivator": icons.cultivator,
   "tractorsl": icons.tractorsl,
   "tractorsm": icons.tractorsm,
-  "tractorsm": icons.tractorss,
+  "tractorss": icons.tractorss,
   "trucks": icons.trucks,
   "watertrailer": icons.watertrailer,
   "fertilizerspreaders": icons.fertilizerspreaders,

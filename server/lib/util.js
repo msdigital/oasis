@@ -6,41 +6,7 @@ module.exports.convert2json = function (xml) {
   return res;
 }
 
-module.exports.getIcon = function(object){
-  if(object=="farmer"){
-    return icons['farmer']
-  }
-  else if(icons.hasOwnProperty(object.category.toLowerCase())){
-    return icons[object.category.toLowerCase()]
-  }
-  else if (icons.hasOwnProperty(object.type.toLowerCase())) {
-    return icons[object.type.toLowerCase()]
-  }
-  return icons['default']
-}
-
-module.exports.getIconPopup = function(object) {
-  var popup = '<b>' + object.name +'</b>'
-
-  popup += '<small>'
-  if (!isNaN(filterFloat(object.fillLevels))) {
-    if (object.fillTypes.toLowerCase() != 'unknown') {
-      popup += '<br><span style="text-transform: capitalize;">' + object.fillTypes.toLowerCase() + '</span> (' + object.fillLevels + ')'
-    }
-    else if (object.fillTypes.toLowerCase() == 'unknown') {
-      popup += '<br>Empty'
-    }
-  }
-
-  if (object.isAIActive=="true"){
-    popup += '<br>Helper: active'
-  }
-  popup += '</small>'
-
-  return popup;
-}
-
-var filterFloat = function (value) {
+module.exports.filterFloat = function (value) {
   if (/^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/
     .test(value))
     return Number(value);

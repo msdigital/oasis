@@ -1,3 +1,5 @@
+var util = require('./util')
+
 /*
   All icons need to have the following format:
   Filetype: .png
@@ -138,4 +140,38 @@ var types = {
 module.exports = {
   type: types,
   icons: icons
+}
+
+module.exports.getIcon = function (object) {
+  if (object == "farmer") {
+    return icons['farmer']
+  }
+  else if (icons.hasOwnProperty(object.category.toLowerCase())) {
+    return icons[object.category.toLowerCase()]
+  }
+  else if (icons.hasOwnProperty(object.type.toLowerCase())) {
+    return icons[object.type.toLowerCase()]
+  }
+  return icons['default']
+}
+
+module.exports.getIconPopup = function (object) {
+  var popup = '<b>' + object.name + '</b>'
+
+  popup += '<small>'
+  if (!isNaN(util.filterFloat(object.fillLevels))) {
+    if (object.fillTypes.toLowerCase() != 'unknown') {
+      popup += '<br><span style="text-transform: capitalize;">' + object.fillTypes.toLowerCase() + '</span> (' + object.fillLevels + ')'
+    }
+    else if (object.fillTypes.toLowerCase() == 'unknown') {
+      popup += '<br>Empty'
+    }
+  }
+
+  if (object.isAIActive == "true") {
+    popup += '<br>Helper: active'
+  }
+  popup += '</small>'
+
+  return popup;
 }

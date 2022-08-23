@@ -1,5 +1,6 @@
 var lodash = require('lodash')
   , util = require('../lib/util')
+  , icons = require('../lib/icons')
 
 var mapSize
 
@@ -27,6 +28,6 @@ module.exports.Vehicle = function(vehicle){
   this.posy = coords.y
   this.type = vehicle._attributes.type
   this.category = vehicle._attributes.category
-  this.icon = util.getIcon(vehicle._attributes)
-  this.popup = util.getIconPopup(vehicle._attributes)
+  this.icon = icons.getIcon(vehicle._attributes)
+  this.popup = icons.getIconPopup(vehicle._attributes)
 }

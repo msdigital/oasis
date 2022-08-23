@@ -1,5 +1,6 @@
 var lodash = require('lodash')
   , util = require('../lib/util')
+  , icons = require('../lib/icons')
 
 module.exports.getPlayers = function(players){
   var results = []
@@ -21,5 +22,5 @@ module.exports.Player = function(player){
   this.admin = player._attributes.isAdmin
   this.posx = coords.x
   this.posy = coords.y
-  this.icon = util.getIcon('farmer')
+  this.icon = icons.getIcon('farmer')
 }

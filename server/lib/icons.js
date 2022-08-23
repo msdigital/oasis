@@ -1,3 +1,5 @@
+var util = require('./util')
+
 /*
   All icons need to have the following format:
   Filetype: .png
@@ -34,9 +36,19 @@ var icons = {
     "desc": "Trucks",
     "dimension": 40
   },
-  "tractor": {
-    "icon": "tractor.png",
-    "desc": "Tractor",
+  "tractorsl": {
+    "icon": "tractorsl.png",
+    "desc": "Tractor Large",
+    "dimension": 32
+  },
+  "tractorsm": {
+    "icon": "tractorsm.png",
+    "desc": "Tractor Medium",
+    "dimension": 32
+  },
+  "tractorss": {
+    "icon": "tractorss.png",
+    "desc": "Tractor Small",
     "dimension": 32
   },
   "cultivator": {
@@ -64,6 +76,26 @@ var icons = {
     "desc": "Seeders",
     "dimension": 32
   },
+  "balers": {
+    "icon": "balers.png",
+    "desc": "Baler",
+    "dimension": 32
+  },
+  "baleloaders": {
+    "icon": "baleloaders.png",
+    "desc": "Baleloader",
+    "dimension": 32
+  },
+  "plows": {
+    "icon": "plows.png",
+    "desc": "Plow",
+    "dimension": 32
+  },
+  "pallet": {
+    "icon": "pallet.png",
+    "desc": "Product Pallet",
+    "dimension": 16
+  },
   "bigbags": {
     "icon": "crate.png",
     "desc": "Bigbags",
@@ -90,16 +122,56 @@ var types = {
   "trailer": icons.trailer,
   "seeders": icons.seeders,
   "bigbags": icons.bigbags,
+  "pallet": icons.pallet,
   "forklifts": icons.forklifts,
   "cultivator": icons.cultivator,
-  "tractor": icons.tractor,
+  "tractorsl": icons.tractorsl,
+  "tractorsm": icons.tractorsm,
+  "tractorss": icons.tractorss,
   "trucks": icons.trucks,
   "watertrailer": icons.watertrailer,
   "fertilizerspreaders": icons.fertilizerspreaders,
+  "plows": icons.plows,
+  "balers": icons.balers,
+  "baleloaders": icons.baleloaders,
   "cars": icons.car,
 }
 
 module.exports = {
   type: types,
   icons: icons
+}
+
+module.exports.getIcon = function (object) {
+  if (object == "farmer") {
+    return icons['farmer']
+  }
+  else if (icons.hasOwnProperty(object.category.toLowerCase())) {
+    return icons[object.category.toLowerCase()]
+  }
+  else if (icons.hasOwnProperty(object.type.toLowerCase())) {
+    return icons[object.type.toLowerCase()]
+  }
+  return icons['default']
+}
+
+module.exports.getIconPopup = function (object) {
+  var popup = '<b>' + object.name + '</b>'
+
+  popup += '<small>'
+  if (!isNaN(util.filterFloat(object.fillLevels))) {
+    if (object.fillTypes.toLowerCase() != 'unknown') {
+      popup += '<br><span style="text-transform: capitalize;">' + object.fillTypes.toLowerCase() + '</span> (' + object.fillLevels + ')'
+    }
+    else if (object.fillTypes.toLowerCase() == 'unknown') {
+      popup += '<br>Empty'
+    }
+  }
+
+  if (object.isAIActive == "true") {
+    popup += '<br>Helper: active'
+  }
+  popup += '</small>'
+
+  return popup;
 }

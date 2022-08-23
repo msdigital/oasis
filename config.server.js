@@ -28,6 +28,6 @@ for (const [k,v] of Object.entries(config)){
 if (errored) process.exit();
 
 config.VERSION = version;
-config.SUPPORTED_LANGUAGES = ['en','de'];
+config.SUPPORTED_LANGUAGES = ['en','de','cz'];
 
 module.exports = config;

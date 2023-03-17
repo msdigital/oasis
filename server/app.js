@@ -46,19 +46,6 @@ server.use(function(err, req, res, next) {
   })
 })
 
-// server.use(errorRouter);
-
-// server.use(function(err, req, res, next){
-//   logger.JSON(err.message);
-//   res.status(err.status || 500);
-//   res.render('error',{
-//     error: {
-//       status: 500,
-//       message: err.message
-//     }
-//   });
-// })
-
 var serverPort = config.WEB_PORT >= 0 ? config.WEB_PORT : 3000;
 
 server.listen(serverPort, () => {

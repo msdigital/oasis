@@ -9,32 +9,33 @@ router.get('/lang/:lang', function (req, res) {
   res.redirect('back');
 })
 
-var _server = null;
+var _server = null
+  , _savegame = null;
 
 router.get('*', function (req, res, next){
-  api.getEntities((entities) => {
-    _server = entities;
-    next();
+  async.parallel({
+    game: function(cb) {
+      api.getSavegame((res) => { cb(null, res) })
+    },
+    entities: function(cb) {
+      api.getEntities((res) => { cb(null, res) })
+    }
+  },
+  function (err, results) {
+    _server = results.entities
+    _savegame = results.game
+    res.locals.isNewServer = _savegame.isNewServer
+    next()
   })
 })
 
 router.get('/economy', function(req, res, next){
-  async.waterfall([
-    function (cb) {
-      api.getSavegame((game) => {
-        cb(null, game.economicDifficulty)
+  api.getEconomy((economy) => {
+    economy.calculateEconomy(_savegame.economicDifficulty, (eco) => {
+      res.render('economy', {
+        server: _server.server,
+        economy: eco //economy callback
       })
-    },
-    function (difficulty, cb) {
-      api.getEconomy((economy) => {
-        economy.calculateEconomy(difficulty,cb)
-      })
-    }
-  ],
-  function(err, result){
-    res.render('economy', {
-      server: _server.server,
-      economy: result //economy callback
     })
   })
 })
@@ -46,19 +47,12 @@ router.get('/mods', function (req, res, next) {
 })
 
 router.get('/', function(req, res, next){
-  async.parallel({
-    savegame: function (cb) {
-      api.getSavegame((res) => { cb(null, res) })
-    }
-  },
-  function (err, results) {
-    res.render('home', {
-      game: results.savegame,
-      slots: _server.slots,
-      server: _server.server,
-      players: _server.players
-    });
-  })
+  res.render('home', {
+    game: _savegame,
+    slots: _server.slots,
+    server: _server.server,
+    players: _server.players
+  });
 })
 
 module.exports = router;

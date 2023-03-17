@@ -36,7 +36,7 @@ module.exports.Economy = function (economy) {
     var prices = calcluatePrices(this.rawPrices, getPriceFactor(difficulty))
     var months = getOrderMonths();
 
-    cb(null, { prices: prices, months: months })
+    cb({ prices: prices, months: months })
   }
 }
 

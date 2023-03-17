@@ -22,6 +22,12 @@ a:hover {
   border-radius: 0;
 }
 
+.card.bg-danger > .card-header {
+  background-color: #ad1c1c;
+  font-size: 14px;
+  font-weight: normal;
+}
+
 .list-group-item {
   font-size: 11px;
   padding-top: 0.3rem;

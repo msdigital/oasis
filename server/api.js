@@ -62,7 +62,7 @@ module.exports.getSavegame = function (cb) {
 
 module.exports.getEconomy = function(cb) {
   request
-    .get('http://176.57.169.251:8600/feed/dedicated-server-savegame.html?code=M8La9eRC&file=economy')
+    .get('http://' + config.SERVER_IP + '/feed/dedicated-server-savegame.html?code=' + config.SERVER_KEY + '&file=economy')
     .end(function (err, xml) {
       if (err) {
         logger.error(err);

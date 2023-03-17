@@ -98,5 +98,7 @@
 	"entity_Baler": "Ballenpresse",
 	"entity_Baleloader": "Ballensammler",
 	"entity_Plow": "Pflug",
-	"entity_Product Pallet": "Produkt Pallette"
+	"entity_Product Pallet": "Produkt Pallette",
+	"No Mods installed": "Keine Mods installiert",
+	"product_LIQUIDSEEDTREATMENT": "Flüssigsamenbehandlung"
 }

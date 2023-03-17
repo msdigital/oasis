@@ -3,7 +3,7 @@ var lodash = require('lodash')
 module.exports.Server = function(server){
   this.name = server._attributes.name
   this.version = server._attributes.version
-  this.mods = getMods(server.Mods.Mod)
+  this.mods = getMods((server.Mods !== undefined ? server.Mods.Mod : null))
 }
 
 module.exports.Slots = function(slots){

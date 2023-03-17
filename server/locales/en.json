@@ -97,5 +97,7 @@
 	"entity_Baleloader": "Baleloader",
 	"entity_Plow": "Plow",
 	"entity_Product Pallet": "Product Pallet",
-	"No Player online": "No Player online"
+	"No Player online": "No Player online",
+	"No Mods installed": "No Mods installed",
+	"product_LIQUIDSEEDTREATMENT": "Liquid seed treatment"
 }

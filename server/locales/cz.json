@@ -97,5 +97,7 @@
 	"entity_Baler": "Balíkovač",
 	"entity_Baleloader": "Nakladač balíků",
 	"entity_Plow": "Pluh",
-	"entity_Product Pallet": "Paleta produktu"
+	"entity_Product Pallet": "Paleta produktu",
+	"product_LIQUIDSEEDTREATMENT": "Tekuté ošetření semen",
+	"No Mods installed": "Nejsou nainstalovány žádné mody"
 }

@@ -39,3 +39,10 @@ mixin footer()
         a(href='http://www.msdigital.ch', target='_blank') msdigital.ch
       span.text-muted.float-end
         | Oasis #{config.VERSION} - Farming Simulator 22 Live Map
+
+mixin newServerError()
+  if isNewServer
+    .row.justify-content-center.new-server-error
+      .col-xl-12
+        .card.bg-danger.mb-3.small.shadow-sm
+          .card-header.text-center="This Server seems to be new. More Information will show up as soon as the server saved the game for the first time!"

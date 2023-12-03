@@ -54,6 +54,37 @@ If you, for example, take a look at the Link XML, you will see the IP, Port and 
 
 ### **_I do not provide support for installation and hosting!_**
 
+## Docker
+
+### Creating Image
+
+`docker build . -t ls22-oasis`
+
+### Running the image
+
+`docker run -it -e WEB_PORT=3000 -e SERVER_IP=your_server_ip:port -e SERVER_KEY=your_server_key -e DEFAULT_LANGUAGE=de -p 80:3000 ls22-oasis`
+
+### Docker Compose example
+
+```docker
+services:
+  ls22-oasis:
+    image: bergi9/ls22-oasis:latest
+    container_name: ls22-oasis
+    restart: unless-stopped
+    ports:
+      - "80:3000"
+    environment:
+      WEB_PORT: 3000
+      SERVER_IP: your_server_ip:port
+      SERVER_KEY: your_server_key
+      DEFAULT_LANGUAGE: de
+```
+
+### Public Docker Image
+
+`bergi9/ls22-oasis`
+
 ## Authors
 
 This project is licensed under GNU Lesser General Public License version 3 (GNU LGPLv3) - see the [LICENSE](LICENSE) file for details.
